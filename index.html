@@ -1,0 +1,41 @@
+<!-- index.html -->
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Soporte | CorpTech</title>
+  <link rel="stylesheet" href="/styles/common.css">
+</head>
+<body>
+  <main class="wrap">
+    <header><h1>Soporte CorpTech</h1></header>
+
+    <section class="card">
+      <p class="muted">Ingresá modelo para verificar estado. Esto es una simulación narrativa.</p>
+      <form id="checkForm" class="grid">
+        <label class="field">Modelo
+          <input name="device" placeholder="iPhone 4s" required>
+        </label>
+        <div class="actions">
+          <button type="submit">Verificar</button>
+        </div>
+      </form>
+    </section>
+
+    <footer class="muted small">Proyecto: PoC transmedia — uso académico</footer>
+  </main>
+
+  <script>
+    // Navegación hacia la interstitial simulada
+    document.getElementById('checkForm').addEventListener('submit', e=>{
+      e.preventDefault();
+      const device = encodeURIComponent(e.target.device.value.trim());
+      // Para hosting estático: navegar a intercept.html
+      // Para servidor: navegar a /intercept?device=...
+      const base = location.origin + (location.pathname.includes('.html') ? '' : '');
+      location.href = '/intercept.html?device=' + device;
+    });
+  </script>
+</body>
+</html>
