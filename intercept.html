@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>--- ALERTA ---</title>
-  <link rel="stylesheet" href="/styles/common.css">
+  <link rel="stylesheet" href="/CorpTech/styles/common.css">
   <style>
     /* Estilos propios para el interstitial */
     body{background:#000;color:#a0ff9c;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
@@ -40,18 +40,18 @@
     // Cuenta regresiva y redirección
     let t = 4;
     const c = document.getElementById('count');
-    const id = setInterval(()=>{ t--; c.textContent = t; if(t<=0){ clearInterval(id); location.href = '/result.html?device=' + encodeURIComponent(device); } }, 1000);
+    const id = setInterval(()=>{ t--; c.textContent = t; if(t<=0){ clearInterval(id); location.href = '/CorpTech/result.html?device=' + encodeURIComponent(device); } }, 1000);
 
     // Opciones de usuario (no realiza acciones fuera del sitio)
     document.getElementById('stay').addEventListener('click', ()=>{
       clearInterval(id);
       // Redirigir a una página "underground" de la narrativa
-      location.href = '/resistance_offers.html?device=' + encodeURIComponent(device);
+      location.href = '/CorpTech/resistance_offers.html?device=' + encodeURIComponent(device);
     });
 
     document.getElementById('skip').addEventListener('click', ()=>{
       clearInterval(id);
-      location.href = '/result.html?device=' + encodeURIComponent(device);
+      location.href = result.html?device=' + encodeURIComponent(device);
     });
 
     // Accesibilidad: permitir tecla ESPACIO para pausar
