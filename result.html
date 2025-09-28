@@ -1,0 +1,36 @@
+<!-- result.html -->
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Resultado — CorpTech</title>
+  <link rel="stylesheet" href="/styles/common.css">
+</head>
+<body>
+  <main class="wrap">
+    <header><h1>Resultado: Diagnóstico</h1></header>
+
+    <section class="card">
+      <p id="summary">Generando diagnóstico...</p>
+      <dl id="data" class="muted small"></dl>
+      <a href="/" class="small">Volver</a>
+    </section>
+  </main>
+
+  <script>
+    const params = new URLSearchParams(location.search);
+    const device = params.get('device') || 'desconocido';
+
+    // Simulación de diagnóstico (puede ampliarse con datos narrativos)
+    const diag = {
+      status: 'fuera de garantía',
+      notes: 'El dispositivo figura como reparable mediante intercambio de piezas. Contacto de servicio: soporte@corptech.example (simulado)'
+    };
+
+    document.getElementById('summary').textContent = `Modelo: ${device} — Estado: ${diag.status}`;
+    const dl = document.getElementById('data');
+    dl.innerHTML = `<dt>Notas</dt><dd>${diag.notes}</dd>`;
+  </script>
+</body>
+</html>
