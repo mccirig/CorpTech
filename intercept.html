@@ -38,7 +38,7 @@
     const device = params.get('device') || 'dispositivo';
 
     // Cuenta regresiva y redirección
-    let t = 4;
+    let t = 5;
     const c = document.getElementById('count');
     const id = setInterval(()=>{ t--; c.textContent = t; if(t<=0){ clearInterval(id); location.href = '/CorpTech/result.html?device=' + encodeURIComponent(device); } }, 1000);
 
@@ -51,7 +51,7 @@
 
     document.getElementById('skip').addEventListener('click', ()=>{
       clearInterval(id);
-      location.href = result.html?device=' + encodeURIComponent(device);
+      location.href = '/CorpTech/result.html?device=' + encodeURIComponent(device);
     });
 
     // Accesibilidad: permitir tecla ESPACIO para pausar
