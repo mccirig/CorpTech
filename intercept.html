@@ -1,0 +1,61 @@
+<!-- intercept.html -->
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>--- ALERTA ---</title>
+  <link rel="stylesheet" href="/styles/common.css">
+  <style>
+    /* Estilos propios para el interstitial */
+    body{background:#000;color:#a0ff9c;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+    .center{height:100vh;display:flex;align-items:center;justify-content:center}
+    .panel{max-width:900px;padding:2rem;text-align:center}
+    .glitch{font-size:1.25rem;letter-spacing:.08em;margin-bottom:1rem}
+    #count{font-weight:700}
+    .btn{background:transparent;border:1px solid #a0ff9c;padding:.6rem 1rem;border-radius:8px;cursor:pointer}
+    .warn{color:#ffb86b}
+  </style>
+</head>
+<body>
+  <div class="center">
+    <div class="panel">
+      <div class="glitch">--- INTERFERENCIA: RECUPERADORES ---</div>
+      <p class="warn">Se detectó una alteración en la cadena de suministro digital.</p>
+      <p id="hint">Redirigiendo al servidor corporativo en <span id="count">4</span>...</p>
+
+      <div style="margin-top:1rem">
+        <button id="stay" class="btn">Quedate — Mostrar opciones</button>
+        <button id="skip" class="btn" style="margin-left:.6rem">Seguir al resultado oficial</button>
+      </div>
+
+      <p class="small muted" style="margin-top:1rem">Nota: esto es una simulación narrativa; no se intercepta tráfico real.</p>
+    </div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(location.search);
+    const device = params.get('device') || 'dispositivo';
+
+    // Cuenta regresiva y redirección
+    let t = 4;
+    const c = document.getElementById('count');
+    const id = setInterval(()=>{ t--; c.textContent = t; if(t<=0){ clearInterval(id); location.href = '/result.html?device=' + encodeURIComponent(device); } }, 1000);
+
+    // Opciones de usuario (no realiza acciones fuera del sitio)
+    document.getElementById('stay').addEventListener('click', ()=>{
+      clearInterval(id);
+      // Redirigir a una página "underground" de la narrativa
+      location.href = '/resistance_offers.html?device=' + encodeURIComponent(device);
+    });
+
+    document.getElementById('skip').addEventListener('click', ()=>{
+      clearInterval(id);
+      location.href = '/result.html?device=' + encodeURIComponent(device);
+    });
+
+    // Accesibilidad: permitir tecla ESPACIO para pausar
+    window.addEventListener('keydown', e=>{ if(e.code === 'Space'){ e.preventDefault(); clearInterval(id); document.getElementById('hint').textContent = 'Interacción manual detectada.'; } });
+  </script>
+</body>
+</html>
