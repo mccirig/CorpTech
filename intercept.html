@@ -4,48 +4,63 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>--- ALERTA ---</title>
+  <title>--- INTERFERENCIA DETECTADA ---</title>
   <link rel="stylesheet" href="/CorpTech/styles/common.css">
   <style>
-    /* Estilos propios para el interstitial */
     body{background:#000;color:#a0ff9c;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
     .center{height:100vh;display:flex;align-items:center;justify-content:center}
     .panel{max-width:900px;padding:2rem;text-align:center}
-    .glitch{font-size:1.25rem;letter-spacing:.08em;margin-bottom:1rem}
+    .glitch{font-size:1.4rem;letter-spacing:.08em;margin-bottom:1rem;text-transform:uppercase}
     #count{font-weight:700}
     .btn{background:transparent;border:1px solid #a0ff9c;padding:.6rem 1rem;border-radius:8px;cursor:pointer}
     .warn{color:#ffb86b}
+    .doc{background:#111;border:1px dashed #a0ff9c;padding:1rem;margin:1rem 0;text-align:left;font-size:.9rem;line-height:1.4}
   </style>
 </head>
 <body>
   <div class="center">
     <div class="panel">
-      <div class="glitch">--- INTERFERENCIA: RECUPERADORES ---</div>
-      <p class="warn">Se detectó una alteración en la cadena de suministro digital.</p>
-      <p id="hint">Redirigiendo al servidor corporativo en <span id="count">4</span>...</p>
+      <div class="glitch">--- INTERFERENCIA DE LOS RECUPERADORES ---</div>
+      <p class="warn">Tu conexión fue interceptada. Antes de que CorpTech te redirija, necesitás leer esto.</p>
 
-      <div style="margin-top:1rem">
-        <button id="stay" class="btn">Quedate — Mostrar opciones</button>
-        <button id="skip" class="btn" style="margin-left:.6rem">Seguir al resultado oficial</button>
+      <div class="doc">
+        <strong>[Documento interno 07/14 — “Programa de Obsolescencia Controlada”]</strong><br><br>
+        <em>“Todos los dispositivos modelo <span id="deviceName">###</span> serán degradados vía actualización silenciosa 
+        a partir del ciclo fiscal próximo. El objetivo es forzar reemplazos en un plazo no mayor a 18 meses. 
+        Ningún soporte externo será autorizado.”</em>
       </div>
 
-      <p class="small muted" style="margin-top:1rem">Nota: esto es una simulación narrativa; no se intercepta tráfico real.</p>
+      <p id="hint">CorpTech intentará recuperar la señal en <span id="count">6</span> segundos…</p>
+
+      <div style="margin-top:1rem">
+        <button id="stay" class="btn">Resistir — Ver alternativas</button>
+        <button id="skip" class="btn" style="margin-left:.6rem">Ignorar — Seguir al sitio oficial</button>
+      </div>
+
+      <p class="small muted" style="margin-top:1rem">Simulación narrativa: no se intercepta tráfico real.</p>
     </div>
   </div>
 
   <script>
     const params = new URLSearchParams(location.search);
     const device = params.get('device') || 'dispositivo';
+    document.getElementById('deviceName').textContent = device;
 
     // Cuenta regresiva y redirección
-    let t = 5;
+    let t = 6;
     const c = document.getElementById('count');
-    const id = setInterval(()=>{ t--; c.textContent = t; if(t<=0){ clearInterval(id); location.href = '/CorpTech/result.html?device=' + encodeURIComponent(device); } }, 1000);
+    const id = setInterval(()=>{ 
+      t--; 
+      c.textContent = t; 
+      if(t<=0){ 
+        clearInterval(id); 
+        location.href = '/CorpTech/result.html?device=' + encodeURIComponent(device); 
+      } 
+    }, 1000);
 
-    // Opciones de usuario (no realiza acciones fuera del sitio)
+    // Opciones de usuario
     document.getElementById('stay').addEventListener('click', ()=>{
       clearInterval(id);
-      // Redirigir a una página "underground" de la narrativa
       location.href = '/CorpTech/resistance_offers.html?device=' + encodeURIComponent(device);
     });
 
@@ -54,8 +69,14 @@
       location.href = '/CorpTech/result.html?device=' + encodeURIComponent(device);
     });
 
-    // Accesibilidad: permitir tecla ESPACIO para pausar
-    window.addEventListener('keydown', e=>{ if(e.code === 'Space'){ e.preventDefault(); clearInterval(id); document.getElementById('hint').textContent = 'Interacción manual detectada.'; } });
+    // Accesibilidad: tecla ESPACIO para pausar
+    window.addEventListener('keydown', e=>{
+      if(e.code === 'Space'){
+        e.preventDefault();
+        clearInterval(id);
+        document.getElementById('hint').textContent = 'Interferencia asegurada — espera tu decisión.';
+      }
+    });
   </script>
 </body>
 </html>
