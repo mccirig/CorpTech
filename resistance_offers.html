@@ -2,22 +2,65 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Recuperadores — Ofertas</title>
-  <link rel="stylesheet" href="/CorpTech/styles/common.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Recuperadores — Archivo Filtrado</title>
+  <link rel="stylesheet" href="/CorpTech/styles/common.css" />
+  <style>
+    .header-hero{background:#0b0b0b;color:#cfe; padding:1.2rem;border-radius:12px;margin-bottom:1rem}
+    .manifest{background:#111;border-left:4px solid #a0ff9c;padding:1rem;border-radius:6px;margin-bottom:1rem;font-family:ui-monospace,monospace}
+    .resources{display:grid;grid-template-columns:1fr;gap:.8rem;margin-top:.6rem}
+    .res{background:#fff;padding:1rem;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,.06)}
+    .cta{display:inline-block;margin-top:.6rem;padding:.45rem .7rem;border-radius:8px;background:#1a73e8;color:#fff;text-decoration:none}
+    .note{font-size:.85rem;color:var(--muted);margin-top:.8rem}
+  </style>
 </head>
 <body>
   <main class="wrap">
-    <header><h1>Recuperadores — Alternativas</h1></header>
+    <header class="header-hero">
+      <h1>Archivo Recuperadores</h1>
+      <p class="muted">Fragmentos filtrados: manuales, listas de piezas y protocolos de reparación fuera de circuito.</p>
+    </header>
+
     <section class="card">
-      <p class="muted">Opciones narrativas: intercambio de piezas, redes de trueque, manuales clandestinos.</p>
-      <ul>
-        <li>Oferta A — Reparación parcial: intercambio de carcasa (costo narrativo: 3 favores)</li>
-        <li>Oferta B — Reparación completa (acceso a piezas fuera de circuito)</li>
-        <li>Oferta C — Guía DIY: descargar manual en PDF (simulado)</li>
-      </ul>
-      <a href="/CorpTech/result.html" class="small">Volver al resultado oficial</a>
+      <div class="manifest">
+        <strong>Manifiesto (extracto)</strong><br>
+        No pedimos permiso. Recuperar es desobedecer la lógica del descarte. Cada equipo reparado es un acto de memoria y una grieta en la dominación técnica.
+      </div>
+
+      <div class="resources">
+        <article class="res">
+          <h3>Guía DIY: Reparabilidad básica (PDF - simulado)</h3>
+          <p class="muted">Instrucciones para diagnóstico rápido, reemplazo de módulos y micro-soldadura con herramientas domésticas.</p>
+          <a class="cta" href="/CorpTech/assets/manual_reparacion_simulado.pdf" download>Descargar guía (simulado)</a>
+        </article>
+
+        <article class="res">
+          <h3>Red de Trueque — Listado</h3>
+          <p class="muted">Nodos de intercambio de piezas y contactos seguros. Intercambio por favores: evita la moneda corporativa.</p>
+          <a class="cta" href="/CorpTech/trade_network.html">Ver nodos</a>
+        </article>
+
+        <article class="res">
+          <h3>Parche comunitario (README)</h3>
+          <p class="muted">Descripción conceptual del “parche” que anula rutinas de degradación: solo información, sin código ejecutable.</p>
+          <a class="cta" href="/CorpTech/patch_readme.html">Leer documento</a>
+        </article>
+
+        <article class="res">
+          <h3>Registro de denuncias</h3>
+          <p class="muted">Archivos filtrados que documentan prácticas de obsolescencia. Útiles para la narrativa—no una prueba legal.</p>
+          <a class="cta" href="/CorpTech/leaks_index.html">Explorar archivos</a>
+        </article>
+      </div>
+
+      <p class="note">Nota: todos los recursos son simulados y forman parte del universo narrativo del proyecto. No implican acciones reales fuera de la ficción.</p>
+
+      <p style="margin-top:1rem">
+        <a href="/CorpTech/result.html" class="small">Volver al resultado oficial</a>
+        &nbsp;•&nbsp;
+        <a href="/CorpTech/" class="small">Inicio</a>
+      </p>
     </section>
   </main>
 </body>
